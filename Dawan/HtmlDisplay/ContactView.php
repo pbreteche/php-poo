@@ -1,5 +1,7 @@
 <?php
 
+namespace Dawan\HtmlDisplay;
+
 class ContactView
 {
     public function displayList($contacts)

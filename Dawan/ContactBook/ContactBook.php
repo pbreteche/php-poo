@@ -1,6 +1,6 @@
 <?php
 
-include 'Contact.php';
+namespace Dawan\ContactBook;
 
 class ContactBook
 {

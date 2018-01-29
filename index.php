@@ -1,7 +1,9 @@
 <?php
 
-include 'ContactBook.php';
-include 'ContactView.php';
+require 'autoload.php';
+
+use \Dawan\ContactBook\ContactBook;
+use \Dawan\HtmlDisplay\ContactView;
 
 $contactBook = new ContactBook();
 $contactBook->loadFromFile('data/contacts.php');
