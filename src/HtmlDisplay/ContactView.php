@@ -8,7 +8,7 @@ class ContactView
     {
         $listItems = '';
         foreach ($contacts as $contact) {
-            $listItems .= '<li>' . $contact->getName() . '</li>';
+            $listItems .= '<li><a href="?q=/show/' . $contact->getSlug() . '">' . $contact->getName() . '</a></li>';
         }
         $list = '<ul>' . $listItems . '</ul>';
         

@@ -4,20 +4,28 @@ namespace Dawan\ContactBook;
 
 class Contact
 {
-    protected $name;
+    private $name;
 
-    public function __construct($name)
+    private $slug;
+
+    public function __construct($infos)
     {
-        $this->name = $name;
+        foreach ($infos as $key => $val)
+        $this->$key = $val;
     }
 
     public function __destruct()
     {
         // rarement utilisé
     }
-
+    
     public function getName()
     {
         return $this->name;
+    }
+    
+    public function getSlug()
+    {
+        return $this->slug;
     }
 }
