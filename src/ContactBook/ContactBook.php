@@ -8,7 +8,7 @@ class ContactBook
 
     public function loadFromFile($path)
     {
-        $contactArray = include $path;
+        $contactArray = require $path;
         foreach ($contactArray as $contactName) {
             $this->contacts[] = new Contact($contactName);
         }
