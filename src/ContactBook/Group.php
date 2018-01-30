@@ -13,7 +13,7 @@ class Group
         $this->name = $name;
     }
 
-    public function getContacts()
+    public function getContacts(): array
     {
         return $this->contacts;
     }
@@ -27,12 +27,12 @@ class Group
 
     public function removeContact(Contact $contact)
     {
-        if (!key_exists($contact->getSlug(), $this->contacts)) {
+        if (key_exists($contact->getSlug(), $this->contacts)) {
             unset($this->contacts[$contact->getSlug()]);
         }
     }
 
-    public function getName()
+    public function getName(): string
     {
         return $this->name;
     }

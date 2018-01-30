@@ -15,9 +15,11 @@ class ContactBook
             if (!key_exists($contactInfos['group'], $this->groups)) {
                 $this->groups[$contactInfos['group']] = new Group($contactInfos['group']);
             }
+            $currentGroup = $this->groups[$contactInfos['group']];
             $newContact = new Contact($contactInfos);
+            $newContact->setGroup($currentGroup);
             $this->contacts[$contactInfos['slug']] = $newContact;
-            $this->groups[$contactInfos['group']]->addContact($newContact);
+            $currentGroup->addContact($newContact);
         }
     }
 
@@ -29,7 +31,7 @@ class ContactBook
         ];
     }
     
-    public function getListByGroup($groupName): array
+    public function getListByGroup(string $groupName): array
     {
         return [
             'contacts' => $this->groups[$groupName]->getContacts(),

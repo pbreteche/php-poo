@@ -10,6 +10,8 @@ class Contact
 
     private $email;
 
+    private $group;
+
     public function __construct($infos)
     {
         foreach ($infos as $key => $val)
@@ -35,4 +37,16 @@ class Contact
     {
         return $this->email;
     }
+    
+    public function setGroup(Group $group)
+    {
+        $this->group = $group;
+    }
+    
+    public function getGroup(): Group
+    {
+        return $this->group;
+    }
+
+
 }

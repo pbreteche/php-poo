@@ -6,17 +6,17 @@ class SimpleRequestParser
 {
     const AVAILABLE_QUERIES = [
         '/show' => [
-            'class' => 'ContactBook',
+            'class' => 'Dawan\\ContactBook\\ContactBook',
             'method' => 'getDetails',
             'template' => 'details'
         ],
         '/filter' => [
-            'class' => 'ContactBook',
+            'class' => 'Dawan\\ContactBook\\ContactBook',
             'method' => 'getListByGroup',
             'template' => 'groupList'
         ],
         '/' => [
-            'class' => 'ContactBook',
+            'class' => 'Dawan\\ContactBook\\ContactBook',
             'method' => 'getList',
             'template' => 'list'
         ],

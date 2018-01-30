@@ -1,3 +1,28 @@
 body {
     background: #eef;
 }
+
+.homelink {
+    font-size: 2em;
+    color: darkblue;
+    background: lightcoral;
+    display: inline-block;
+    padding: .5em;
+    border-radius: .5em 0;
+    box-shadow: .1em .1em .2em coral;
+}
+
+.groups {
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+    justify-content: flex-start;
+}
+.groups a {
+    padding: .5em;
+    font-style: oblique;
+    text-decoration: none;
+    color: red;
+    text-shadow: 0 0 1px black;
+}
+    

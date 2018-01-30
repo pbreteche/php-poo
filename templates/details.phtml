@@ -1,3 +1,6 @@
 <h1>Détails de <?= $contact->getName() ?></h1>
 <p>Nom: <?= $contact->getName() ?></p>
 <p>Email: <?= $contact->getEmail() ?></p>
+<p>Group: <a href="?q=/filter&arg=<?= $contact->getGroup()->getName() ?>">
+    <?= $contact->getGroup()->getName() ?>
+</a></p>
