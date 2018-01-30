@@ -10,6 +10,11 @@ class SimpleRequestParser
             'method' => 'getDetails',
             'template' => 'details'
         ],
+        '/filter' => [
+            'class' => 'ContactBook',
+            'method' => 'getListByGroup',
+            'template' => 'groupList'
+        ],
         '/' => [
             'class' => 'ContactBook',
             'method' => 'getList',

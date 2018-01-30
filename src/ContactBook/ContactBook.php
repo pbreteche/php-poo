@@ -6,22 +6,38 @@ class ContactBook
 {
     private $contacts = [];
 
-    public function loadFromFile($path)
+    private $groups = [];
+
+    public function loadFromFile(string $path): void
     {
         $contactArray = require $path;
         foreach ($contactArray as $contactInfos) {
-            $this->contacts[$contactInfos['slug']] = new Contact($contactInfos);
+            if (!key_exists($contactInfos['group'], $this->groups)) {
+                $this->groups[$contactInfos['group']] = new Group($contactInfos['group']);
+            }
+            $newContact = new Contact($contactInfos);
+            $this->contacts[$contactInfos['slug']] = $newContact;
+            $this->groups[$contactInfos['group']]->addContact($newContact);
         }
     }
 
-    public function getList()
+    public function getList(): array
     {
         return [
             'contacts' => $this->contacts,
+            'groups' => $this->groups,
+        ];
+    }
+    
+    public function getListByGroup($groupName): array
+    {
+        return [
+            'contacts' => $this->groups[$groupName]->getContacts(),
+            'groupName' => $groupName,
         ];
     }
 
-    public function getDetails($contactSlug)
+    public function getDetails(string $contactSlug): array
     {
         return [
             'contact' => $this->contacts[$contactSlug],

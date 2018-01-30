@@ -15,3 +15,4 @@
 4. autoload
 5. composer
 6. inheritance
+7. agrégation

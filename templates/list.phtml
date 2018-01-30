@@ -1,6 +1,15 @@
 <h1>Liste des contacts</h1>
 
-<ul>
+<ul class="groupss">
+<?php foreach($groups as $group): ?>
+    <li>
+        <a href="?q=/filter&arg=<?= $group->getName() ?>"> <?= $group->getName() ?></a>
+    </li>
+<?php endforeach; ?>
+</ul>
+
+
+<ul class="contacts">
 <?php foreach($contacts as $contact): ?>
     <li>
         <a href="?q=/show&arg=<?= $contact->getSlug() ?>"> <?= $contact->getName() ?></a>
