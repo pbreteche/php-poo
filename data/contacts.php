@@ -3,22 +3,27 @@
 return [
     [
         'name' => 'Alain',
-        'slug' => 'alain'
+        'slug' => 'alain',
+        'email' => 'john.doe@example.org',
     ],
     [
         'name' => 'Bernard',
-        'slug' => 'bernard'
+        'slug' => 'bernard',
+        'email' => 'john.doe@example.org',
     ],
     [
         'name' => 'Charles',
-        'slug' => 'charles'
+        'slug' => 'charles',
+        'email' => 'john.doe@example.org',
     ],
     [
         'name' => 'Didier',
-        'slug' => 'didier'
+        'slug' => 'didier',
+        'email' => 'john.doe@example.org',
     ],
     [
         'name' => 'Etienne',
-        'slug' => 'etienne'
+        'slug' => 'etienne',
+        'email' => 'john.doe@example.org',
     ],
 ];

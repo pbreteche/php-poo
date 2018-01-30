@@ -10,12 +10,21 @@ class ContactBook
     {
         $contactArray = require $path;
         foreach ($contactArray as $contactInfos) {
-            $this->contacts[] = new Contact($contactInfos);
+            $this->contacts[$contactInfos['slug']] = new Contact($contactInfos);
         }
     }
 
     public function getList()
     {
-        return $this->contacts;
+        return [
+            'contacts' => $this->contacts,
+        ];
+    }
+
+    public function getDetails($contactSlug)
+    {
+        return [
+            'contact' => $this->contacts[$contactSlug],
+        ];
     }
 }

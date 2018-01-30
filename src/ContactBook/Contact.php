@@ -8,6 +8,8 @@ class Contact
 
     private $slug;
 
+    private $email;
+
     public function __construct($infos)
     {
         foreach ($infos as $key => $val)
@@ -27,5 +29,10 @@ class Contact
     public function getSlug()
     {
         return $this->slug;
+    }
+    
+    public function getEmail()
+    {
+        return $this->email;
     }
 }
