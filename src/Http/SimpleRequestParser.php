@@ -2,6 +2,8 @@
 
 namespace Dawan\Http;
 
+use Dawan\Exception\BadRequestException;
+
 class SimpleRequestParser
 {
     const AVAILABLE_QUERIES = [
@@ -32,6 +34,6 @@ class SimpleRequestParser
                 return array_merge($queryConfig, ['arg' => $_GET['arg'] ?? '']);
             }
         }
-        return 'oups 404...';
+        throw new BadRequestException();
     }
 }

@@ -27,6 +27,11 @@ class Contact
     {
         return $this->name;
     }
+
+    public function incrementSlug()
+    {
+        $this->slug .= '-1'; 
+    }
     
     public function getSlug()
     {

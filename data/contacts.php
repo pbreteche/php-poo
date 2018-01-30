@@ -8,6 +8,12 @@ return [
         'group' => 'family',
     ],
     [
+        'name' => 'Alain',
+        'slug' => 'alain',
+        'email' => 'john.doe@example.org',
+        'group' => 'family',
+    ],
+    [
         'name' => 'Bernard',
         'slug' => 'bernard',
         'email' => 'john.doe@example.org',

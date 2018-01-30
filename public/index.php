@@ -6,6 +6,7 @@ use Dawan\ContactBook\ContactBook;
 use Dawan\HtmlDisplay\ContactView;
 use Dawan\Http\SimpleRequestParser;
 use Symfony\Component\Debug\Debug;
+use Dawan\Exception\BadRequestException;
 
 Debug::enable();
 
@@ -15,7 +16,15 @@ $contactBook->loadFromFile(__DIR__ . '/../data/contacts.php');
 
 // Analyse de la requête utilisateur
 $requestParser = new SimpleRequestParser();
-$action = $requestParser->getAction();
+try {
+    $action = $requestParser->getAction();
+} catch (BadRequestException $a) {
+    http_response_code(400);
+    require __DIR__ . '/../templates/error400.html';
+    die;
+}
+
+
 
 // appèle la bonne action suivant la demande utlisateur
 // récupère une structure de données, en fonction de l'action

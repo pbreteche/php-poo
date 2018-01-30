@@ -2,6 +2,8 @@
 
 namespace Dawan\ContactBook;
 
+use Dawan\Exception\DuplicateContactException;
+
 class ContactBook
 {
     private $contacts = [];
@@ -18,8 +20,14 @@ class ContactBook
             $currentGroup = $this->groups[$contactInfos['group']];
             $newContact = new Contact($contactInfos);
             $newContact->setGroup($currentGroup);
-            $this->contacts[$contactInfos['slug']] = $newContact;
-            $currentGroup->addContact($newContact);
+            try {
+                $currentGroup->addContact($newContact);
+            }
+            catch(DuplicateContactException $e) {
+                $newContact->incrementSlug();
+                $currentGroup->addContact($newContact);
+            }
+            $this->contacts[$newContact->getSlug()] = $newContact;
         }
     }
 

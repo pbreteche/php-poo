@@ -2,6 +2,8 @@
 
 namespace Dawan\ContactBook;
 
+use Dawan\Exception\DuplicateContactException;
+
 class Group
 {
     private $contacts =  [];
@@ -22,6 +24,9 @@ class Group
     {
         if (!key_exists($contact->getSlug(), $this->contacts)) {
             $this->contacts[$contact->getSlug()] = $contact;
+        }
+        else {
+            throw new DuplicateContactException('Le contact est déjà présent');
         }
     }
 
