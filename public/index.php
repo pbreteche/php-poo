@@ -3,6 +3,7 @@
 require __DIR__ . '/../vendor/autoload.php';
 
 use Dawan\ContactBook\ContactBook;
+use Dawan\ContactBook\ContactProvider;
 use Dawan\HtmlDisplay\ContactView;
 use Dawan\Http\SimpleRequestParser;
 use Symfony\Component\Debug\Debug;
@@ -11,8 +12,11 @@ use Dawan\Exception\BadRequestException;
 Debug::enable();
 
 // initialisation du carnet d'adresses
-$contactBook = new ContactBook();
-$contactBook->loadFromFile(__DIR__ . '/../data/contacts.php');
+$contactBook = new ContactBook(new ContactProvider(new \PDO(
+    'mysql:host=localhost;dbname=php-poo;charset=utf8',
+    'root',
+    'rootpass'
+)));
 
 // Analyse de la requête utilisateur
 $requestParser = new SimpleRequestParser();
@@ -23,8 +27,6 @@ try {
     require __DIR__ . '/../templates/error400.html';
     die;
 }
-
-
 
 // appèle la bonne action suivant la demande utlisateur
 // récupère une structure de données, en fonction de l'action

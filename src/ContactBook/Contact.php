@@ -12,17 +12,16 @@ class Contact
 
     private $group;
 
-    public function __construct($infos)
-    {
-        foreach ($infos as $key => $val)
-        $this->$key = $val;
-    }
-
     public function __destruct()
     {
         // rarement utilisé
     }
     
+    public function setName(string $name)
+    {
+        $this->name = $name;
+    }
+
     public function getName()
     {
         return $this->name;
@@ -33,11 +32,21 @@ class Contact
         $this->slug .= '-1'; 
     }
     
+    public function setSlug(string $slug)
+    {
+        $this->slug = $slug;
+    }
+
     public function getSlug()
     {
         return $this->slug;
     }
     
+    public function setEmail(string $email)
+    {
+        $this->email = $email;
+    }
+
     public function getEmail()
     {
         return $this->email;

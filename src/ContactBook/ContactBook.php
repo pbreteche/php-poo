@@ -6,43 +6,25 @@ use Dawan\Exception\DuplicateContactException;
 
 class ContactBook
 {
-    private $contacts = [];
+    private $provider;
 
-    private $groups = [];
-
-    public function loadFromFile(string $path): void
+    public function __construct(ContactProvider $provider)
     {
-        $contactArray = require $path;
-        foreach ($contactArray as $contactInfos) {
-            if (!key_exists($contactInfos['group'], $this->groups)) {
-                $this->groups[$contactInfos['group']] = new Group($contactInfos['group']);
-            }
-            $currentGroup = $this->groups[$contactInfos['group']];
-            $newContact = new Contact($contactInfos);
-            $newContact->setGroup($currentGroup);
-            try {
-                $currentGroup->addContact($newContact);
-            }
-            catch(DuplicateContactException $e) {
-                $newContact->incrementSlug();
-                $currentGroup->addContact($newContact);
-            }
-            $this->contacts[$newContact->getSlug()] = $newContact;
-        }
-    }
+        $this->provider = $provider;
+    }   
 
     public function getList(): array
     {
         return [
-            'contacts' => $this->contacts,
-            'groups' => $this->groups,
+            'contacts' => $this->provider->findAll(),
+            'groups' => $this->provider->findGroups(),
         ];
     }
     
     public function getListByGroup(string $groupName): array
     {
         return [
-            'contacts' => $this->groups[$groupName]->getContacts(),
+            'contacts' => $this->provider->findByGroup($groupName),
             'groupName' => $groupName,
         ];
     }
@@ -50,7 +32,7 @@ class ContactBook
     public function getDetails(string $contactSlug): array
     {
         return [
-            'contact' => $this->contacts[$contactSlug],
+            'contact' => $this->provider->findBySlug($contactSlug),
         ];
     }
 }

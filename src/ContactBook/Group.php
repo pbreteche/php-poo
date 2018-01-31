@@ -10,11 +10,6 @@ class Group
 
     private $name;
 
-    public function __construct($name)
-    {
-        $this->name = $name;
-    }
-
     public function getContacts(): array
     {
         return $this->contacts;
@@ -36,7 +31,12 @@ class Group
             unset($this->contacts[$contact->getSlug()]);
         }
     }
-
+    
+    public function setName(string $name)
+    {
+        $this->name = $name;
+    }
+    
     public function getName(): string
     {
         return $this->name;
